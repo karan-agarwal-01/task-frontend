@@ -28,7 +28,7 @@ const HomePage = () => {
     window.location.href = "/login";
   };
 
-  if (!user) return <p className="text-center mt-10 text-gray-600">Please log in to see your info.</p>;
+  if (!user) return <p className="text-center mt-10 text-gray-600"></p>;
 
   return (
     <div className="flex justify-center items-center min-h-screen  bg-gray-400 p-2">
