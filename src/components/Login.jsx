@@ -41,7 +41,7 @@ const Login = () => {
                         {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
                     </div>
                     <button type="submit" className="cursor-pointer w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition disabled:opacity-70" disabled={isSubmitting}>
-                        {isSubmitting ? "Creating..." : "Login"}
+                        Login
                     </button>
                 </form>
                 <p className="mt-4 text-sm text-center text-gray-600">
