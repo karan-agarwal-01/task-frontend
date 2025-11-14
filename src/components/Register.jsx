@@ -2,6 +2,10 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { registration } from "../services/Apis";
 import { toast } from "react-toastify";
+import GoogleButton from "./GoogleButton";
+import LinkedInButton from "./LinkedInButton";
+import FacebookButton from "./FacebookButton";
+import InstagramButton from "./InstagramButton";
 
 const Register = () => {
 
@@ -16,7 +20,7 @@ const Register = () => {
                 navigate('/login')
             }
         } catch (error) {
-            toast.error(error.response.data.message);
+            toast.error(error.message);
             console.log(error);
         }
     };
@@ -44,6 +48,10 @@ const Register = () => {
                     <button type="submit" className="cursor-pointer w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition disabled:opacity-70" disabled={isSubmitting}>
                         {isSubmitting ? "Creating..." : "Register"}
                     </button>
+                    <GoogleButton />
+                    <LinkedInButton />
+                    <FacebookButton />
+                    <InstagramButton />
                 </form>
                 <p className="mt-4 text-sm text-center text-gray-600">
                     Already have an account ? <span  onClick={() => navigate('/login')} className="text-indigo-600 cursor-pointer font-medium">Log In</span>

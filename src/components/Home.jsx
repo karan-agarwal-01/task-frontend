@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { fetchMe } from "../services/Apis";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import Img from '../assets/img.webp';
 
 const HomePage = () => {
   const [user, setUser] = useState(null);
   console.log(user)
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -21,6 +24,16 @@ const HomePage = () => {
     fetchUser();
   }, []);
 
+  const getImageSrc = (url) => {
+    if (!url) return Img;
+    // If LinkedIn image (contains "media.licdn.com"), proxy it
+    if (url.includes("media.licdn.com")) {
+      return `https://task-backend-chi.vercel.app/proxy/image?url=${encodeURIComponent(url)}`;
+    }
+    // otherwise return direct URL for google/facebook/github etc.
+    return url;
+  };
+
   const handleLogout = () => {
     localStorage.removeItem("accessToken"); 
     toast.success("Logged out successfully");
@@ -34,19 +47,27 @@ const HomePage = () => {
     <div className="flex justify-center items-center min-h-screen  bg-gray-400 p-2">
       <div className="bg-white rounded-xl shadow-lg p-8 max-w-md w-full">
         <h1 className="text-2xl font-bold mb-4 text-center">
-          Welcome {user.onboardingData?.personal?.fullname || user.email}
+          Welcome {user.onboardingData?.personal?.fullname || user.fullname}
         </h1>
 
         {!user.onboarded ? (
           <p className="text-center text-gray-500">
             Please complete your onboarding to view your full profile.
+            <p onClick={() => navigate('/onboarding')} className="text-indigo-600 text-sm mt-1 text-center font-semibold cursor-pointer">complete your profile</p>
           </p>
         ) : (
           <div className="space-y-4">
-            <div>
-              <h2 className="text-lg font-semibold mb-1">Personal Info</h2>
-              <p><span className="font-medium">Full Name:</span> {user.onboardingData.personal.fullname}</p>
-              <p><span className="font-medium">Gender:</span> {user.onboardingData.personal.gender}</p>
+            <div className="flex justify-between items-center">
+              <div>
+                <h2 className="text-lg font-semibold mb-1">Personal Info</h2>
+                <p><span className="font-medium">Full Name:</span> {user.fullname || user.onboardingData.personal.fullname}</p>
+                <p><span className="font-medium">Email:</span> {user.email}</p>
+                <p><span className="font-medium">Gender:</span> {user.onboardingData.personal.gender}</p>
+              </div>
+
+              <div className="flex gap-4">
+                  <img src={getImageSrc(user?.photo)} alt="profile" className="w-20 h-20 rounded-full border-2 object-cover border-gray-200" />
+              </div>
             </div>
 
             <div>

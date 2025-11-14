@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const BASE_URL = "https://task-backend-chi.vercel.app/api";
+// const BASE_URL = "http://localhost:3000/api";
 
 const Axios = axios.create({
     baseURL: BASE_URL,
@@ -75,6 +76,24 @@ export const completeOnboarding = async (data) => {
 export const fetchMe = async () => {
     try {
         const res = await Axios.get(`/onboarding/me`)
+        return res.data;
+    } catch (error) {
+        throw new Error(error.response?.data?.message)
+    }
+}
+
+export const forgetPassword = async (data) => {
+    try {
+        const res = await Axios.post("/auth/forgot-password", data);
+        return res.data;
+    } catch (error) {
+        throw new Error(error.response?.data?.message)
+    }
+}
+
+export const resetPassword  = async (token, data) => {
+    try {
+        const res = await Axios.post(`/auth/reset-password/${token}`, data)
         return res.data;
     } catch (error) {
         throw new Error(error.response?.data?.message)
