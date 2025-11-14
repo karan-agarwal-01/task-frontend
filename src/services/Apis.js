@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://task-backend-eight-delta.vercel.app";
+const BASE_URL = "https://task-backend-eight-delta.vercel.app/api/api";
 // const BASE_URL = "http://localhost:3000/api";
 
 const Axios = axios.create({
