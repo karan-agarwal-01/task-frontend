@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = "https://task-backend-eight-delta.vercel.app/api";
-// const BASE_URL = "http://localhost:3000/api";
+// const BASE_URL = "https://task-backend-eight-delta.vercel.app/api";
+const BASE_URL = "http://localhost:3001/api";
 
 const Axios = axios.create({
     baseURL: BASE_URL,
@@ -97,5 +97,17 @@ export const resetPassword  = async (token, data) => {
         return res.data;
     } catch (error) {
         throw new Error(error.response?.data?.message)
+    }
+}
+
+export const facebookLogin = async (data) => {
+    try {
+        const res = await Axios.post(`/auth/facebook`, data)
+        if (res.data.token) {
+            localStorage.setItem("accessToken", res.data.token)
+        }
+        return res.data;
+    } catch (error) {
+        throw new Error(error.response?.data?.message || "Facebook login failed")
     }
 }
