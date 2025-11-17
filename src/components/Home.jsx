@@ -44,7 +44,7 @@ const HomePage = () => {
   if (!user) return <p className="text-center mt-10 text-gray-600"></p>;
 
   return (
-    <div className="flex justify-center items-center min-h-screen  bg-gray-400 p-2">
+    <div className="flex lg:flex-row md:flex-row flex-col justify-center items-center min-h-screen bg-gray-400 p-2 gap-2">
       <div className="bg-white rounded-xl shadow-lg p-8 max-w-md w-full">
         <h1 className="text-2xl font-bold mb-4 text-center">
           Welcome {user.onboardingData?.personal?.fullname || user.fullname}
@@ -90,6 +90,9 @@ const HomePage = () => {
         >
           Logout
         </button>
+      </div>
+      <div className="bg-white rounded-xl shadow-lg p-8 max-w-50 w-full hover:bg-gray-200 cursor-pointer">
+        <div onClick={() => navigate('/todo-app')} className="font-semibold">Todo Application</div>
       </div>
     </div>
   );
