@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 
 const Step2 = ({ prevStep, nextStep, setFormData  }) => {
 
-    const { register, handleSubmit, formState: {errors} } = useForm();
+    const { register, handleSubmit, formState: {errors, isSubmitting} } = useForm();
 
     const onSubmit = async (data) => {
         try {
@@ -34,7 +34,7 @@ const Step2 = ({ prevStep, nextStep, setFormData  }) => {
                     </div>
                     <div className="flex gap-2 mt-5">
                         <button type="button" onClick={prevStep}  className="cursor-pointer w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition disabled:opacity-70">Prev</button>
-                        <button type="submit" className="cursor-pointer w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition disabled:opacity-70">Next</button>
+                        <button type="submit" disabled={isSubmitting} className="cursor-pointer w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition disabled:opacity-70">Next</button>
                     </div>
                 </form>
             </div>

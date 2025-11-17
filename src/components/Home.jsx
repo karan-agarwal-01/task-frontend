@@ -91,8 +91,8 @@ const HomePage = () => {
           Logout
         </button>
       </div>
-      <div className="bg-white rounded-xl shadow-lg p-8 max-w-50 w-full hover:bg-gray-200 cursor-pointer">
-        <div onClick={() => navigate('/todo-app')} className="font-semibold">Todo Application</div>
+      <div onClick={() => navigate('/todo-app')} className="bg-white rounded-xl shadow-lg p-8 max-w-50 w-full hover:bg-gray-200 cursor-pointer">
+        <div className="font-semibold">Todo Application</div>
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import axios from "axios";
 const BASE_URL = "https://task-backend-eight-delta.vercel.app/api";
 // const BASE_URL = "http://localhost:3000/api";
 
-const Axios = axios.create({
+export const Axios = axios.create({
     baseURL: BASE_URL,
 });
 

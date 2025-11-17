@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const Step3 = ({ prevStep, setFormData }) => {
 
-    const { register, handleSubmit, formState: {errors} } = useForm();
+    const { register, handleSubmit, formState: {errors, isSubmitting} } = useForm();
     const navigate = useNavigate();
 
     const handleFinalSubmit = async (data) => {
@@ -37,7 +37,7 @@ const Step3 = ({ prevStep, setFormData }) => {
                     </div>
                     <div className="flex gap-2 mt-5">
                         <button type="button" onClick={prevStep}  className="cursor-pointer w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition disabled:opacity-70">Prev</button>
-                        <button type="submit" className="cursor-pointer w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition disabled:opacity-70">Submit</button>
+                        <button type="submit" disabled={isSubmitting} className="cursor-pointer w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition disabled:opacity-70">Submit</button>
                     </div>
                 </form>
             </div>

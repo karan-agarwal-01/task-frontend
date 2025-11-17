@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { FaEdit, FaPencilAlt, FaPlus, FaSave, FaTrash } from "react-icons/fa";
+import { Axios } from "../services/Apis";
+import { useNavigate } from "react-router-dom";
 
-const BASE_URL = "https://task-backend-eight-delta.vercel.app/api/todos";
+// const BASE_URL = "https://task-backend-eight-delta.vercel.app/api/todos";
 // const BASE_URL = "http://localhost:3000/api/todos";
 
 const TodoList = ()  => {
@@ -12,9 +14,11 @@ const TodoList = ()  => {
     const [editId, setEditId] = useState(null);
     const [editText, setEditText] = useState("");
     const [isEdit, setIsEdit] = useState(false);
+
+    const navigate = useNavigate(); 
     
     const fetchTodos = async () => {
-        const res = await axios.get(`${BASE_URL}/get-list`);
+        const res = await Axios.get(`/todos/get-list`);
         setTodos(res.data);
     };
 
@@ -24,25 +28,25 @@ const TodoList = ()  => {
 
     const createTodo = async () => {
         if (!newTodo.trim()) return;
-        await axios.post(`${BASE_URL}/create-todo`, { title: newTodo });
+        await Axios.post(`/todos/create-todo`, { title: newTodo });
         setNewTodo("");
         fetchTodos();
     };
 
     const updateTodo = async () => {
-        await axios.put(`${BASE_URL}/update-todo/${editId}`, { title: editText });
+        await Axios.put(`/todos/update-todo/${editId}`, { title: editText });
         setEditId(null);
         setEditText("");
         fetchTodos();
     };
 
     const deleteTodo = async (id) => {
-        await axios.delete(`${BASE_URL}/delete-todo/${id}`);
+        await Axios.delete(`/todos/delete-todo/${id}`);
         fetchTodos();
     };
 
     const toggleComplete = async (todo) => {
-        await axios.put(`${BASE_URL}/update-todo/${todo._id}`, {
+        await Axios.put(`/todos/update-todo/${todo._id}`, {
             completed: !todo.completed
         });
         fetchTodos();
@@ -96,6 +100,7 @@ const TodoList = ()  => {
                         </div>
                     ))}
                 </div>
+                <div onClick={() =>  navigate('/home')} className="text-md text-gray-500 text-center mt-10 cursor-pointer">Back to home</div>
             </div>
         </div>
     );

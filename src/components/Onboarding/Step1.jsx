@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 
 const Step1 = ({ nextStep, setFormData }) => {
 
-    const { register, handleSubmit, formState: {errors} } = useForm();
+    const { register, handleSubmit, formState: {errors, isSubmitting} } = useForm();
 
     const onSubmit = async (data) => {
         try {
@@ -40,7 +40,7 @@ const Step1 = ({ nextStep, setFormData }) => {
                         {errors.gender && <p className="text-red-500 text-sm mt-1">{errors.gender.message}</p>}
                     </div>
                     <div className="mt-5">
-                        <button type="submit" className="cursor-pointer w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition disabled:opacity-70">Next</button>
+                        <button type="submit" disabled={isSubmitting} className="cursor-pointer w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition disabled:opacity-70">Next</button>
                     </div>
                 </form>
             </div>
