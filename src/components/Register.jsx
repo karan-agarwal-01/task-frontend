@@ -6,6 +6,8 @@ import GoogleButton from "./GoogleButton";
 import LinkedInButton from "./LinkedInButton";
 import FacebookButton from "./FacebookButton";
 import InstagramButton from "./InstagramButton";
+import GithubButton from "./GithubButton";
+import XButton from "./XButton";
 
 const Register = () => {
 
@@ -50,6 +52,8 @@ const Register = () => {
                     </button>
                     <GoogleButton />
                     <LinkedInButton />
+                    <XButton />
+                    <GithubButton />
                     <FacebookButton />
                     <InstagramButton />
                 </form>

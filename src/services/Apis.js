@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const BASE_URL = "https://task-backend-eight-delta.vercel.app/api";
-// const BASE_URL = "http://localhost:3001/api";
+// const BASE_URL = "http://localhost:3000/api";
 
 const Axios = axios.create({
     baseURL: BASE_URL,
@@ -109,5 +109,23 @@ export const facebookLogin = async (data) => {
         return res.data;
     } catch (error) {
         throw new Error(error.response?.data?.message || "Facebook login failed")
+    }
+}
+
+export const xLogin = async () => {
+    try {
+        const res = await Axios.get('/auth/x/login')
+        return res.data;
+    } catch (error) {
+        throw new Error(error.response?.data?.message || "X login failed")   
+    }
+}
+
+export const GithubLogin = async () => {
+    try {
+        const res = await Axios.get('/auth/github/login')
+        return res.data;
+    } catch (error) {
+        throw new Error(error.response?.data?.message || "X login failed")   
     }
 }

@@ -12,6 +12,7 @@ import ForgetPassword from './components/ForgotPassword'
 import ResetPassword from './components/ResetPassword'
 import EmailSentConfirmation from './components/EmailSentConfirmation'
 import SocialAuthSuccess from './components/SocialAuthSuccess'
+import TodoList from './components/TodoList'
 // import ProfilePage from './components/ProfilePage'
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path="/reset-password/:token" element={<ResetPassword />} /> 
         <Route path='/sent-email' element={<EmailSentConfirmation />} />
         <Route path="/auth/social-success" element={<SocialAuthSuccess />} />
+        <Route path="/todo-app" element={<TodoList />} />
         {/* <Route path='/profile' element={<PrivateRoute><ProfilePage /></PrivateRoute>} /> */}
         
         <Route path='/onboarding' element={<PrivateRoute><Onboarding /></PrivateRoute>} />

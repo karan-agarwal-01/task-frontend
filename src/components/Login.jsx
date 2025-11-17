@@ -6,6 +6,8 @@ import GoogleButton from "./GoogleButton";
 import LinkedInButton from "./LinkedInButton";
 import FacebookButton from "./FacebookButton";
 import InstagramButton from "./InstagramButton";
+import XButton from "./XButton";
+import GithubButton from "./GithubButton";
 
 const Login = () => {
 
@@ -48,6 +50,8 @@ const Login = () => {
                     <button type="submit" className="cursor-pointer w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition disabled:opacity-70" disabled={isSubmitting}>Login</button>
                     <GoogleButton />
                     <LinkedInButton />
+                    <XButton />
+                    <GithubButton />
                     <FacebookButton />
                     <InstagramButton />
                 </form>
