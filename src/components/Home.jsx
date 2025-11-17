@@ -24,20 +24,16 @@ const HomePage = () => {
     fetchUser();
   }, []);
 
-  // const getImageSrc = (url) => {
-  //   if (!url) return Img;
-  //   // If LinkedIn image (contains "media.licdn.com"), proxy it
-  //   if (url.includes("media.licdn.com")) {
-  //     return `https://task-backend-chi.vercel.app/proxy/image?url=${encodeURIComponent(url)}`;
-  //   }
-  //   return url;
-  // };
-
-  const getImageSrc = (filename) => {
-    if (!filename) return Img;
-    return `https://task-backend-chi.vercel.app/image/${filename}`;
+  const getImageSrc = (url) => {
+    if (!url) return Img;
+    // If LinkedIn image (contains "media.licdn.com"), proxy it
+    if (url.includes("media.licdn.com")) {
+      return `https://task-backend-chi.vercel.app/proxy/image?url=${encodeURIComponent(url)}`;
+    }
+    // otherwise return direct URL for google/facebook/github etc.
+    return url;
   };
-  
+
   const handleLogout = () => {
     localStorage.removeItem("accessToken"); 
     toast.success("Logged out successfully");
